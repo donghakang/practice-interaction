@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { Timeline, Tween } from "react-gsap";
 import { Controller, Scene } from "react-scrollmagic";
 
 function Basic2() {
@@ -15,30 +16,56 @@ function Basic2() {
           <div>Pin Test</div>
         </div>
       </Scene>
-      <Scene duration={200} pin={{ pushFollowers: false }}>
-        <div
-          css={css`
-            padding: 30px;
-            background-color: dodgerblue;
-          `}
-        >
-          <div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa
-            dignissimos quos sed iure aut? At harum aspernatur quos blanditiis
-            officiis vitae id ea quisquam porro ex, assumenda architecto
-            provident tenetur!
+      <Scene triggerHook="onLeave" duration={3000} pin>
+        {(progress: any) => (
+          <div
+            css={css`
+              background-color: aliceblue;
+              height: 100vh;
+              width: 100%; ;
+            `}
+          >
+            <Timeline totalProgress={progress} paused>
+              <Tween
+                from={{ x: "10%", top: "60%" }}
+                to={{ x: "60%", top: "10%" }}
+              >
+                <div
+                  css={css`
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                  `}
+                >
+                  <div
+                    css={css`
+                      background-color: greenyellow;
+                      width: 60px;
+                      height: 60px;
+                      border-radius: 8px;
+                    `}
+                  ></div>
+                </div>
+              </Tween>
+              <Timeline
+                target={
+                  <div
+                    css={css`
+                      position: absolute;
+                      height: 100%;
+                      width: 100%;
+                    `}
+                  >
+                    <h2>This is a cool heading</h2>
+                  </div>
+                }
+              >
+                <Tween from={{ opacity: 0 }} to={{ opacity: 1 }} />
+                <Tween to={{ x: "50%" }} />
+              </Timeline>
+            </Timeline>
           </div>
-        </div>
-      </Scene>
-      <Scene duration={300} pin={true} offset={100}>
-        <div
-          css={css`
-            padding: 30px;
-            background-color: dodgerblue;
-          `}
-        >
-          <div>Pin Test</div>
-        </div>
+        )}
       </Scene>
     </Controller>
   );

@@ -21,22 +21,17 @@ function Header() {
           <Link to="/basic2">Basic2</Link>
         </li>
         <li>
-          <Link to="/">Basic</Link>
+          <Link to="/tween">Tween</Link>
         </li>
         <li>
-          <Link to="/">Basic</Link>
+          <Link to="/text">Text</Link>
+        </li>
+
+        <li>
+          <Link to="/list">List</Link>
         </li>
         <li>
-          <Link to="/">Basic</Link>
-        </li>
-        <li>
-          <Link to="/">Basic</Link>
-        </li>
-        <li>
-          <Link to="/">Basic</Link>
-        </li>
-        <li>
-          <Link to="/">Basic</Link>
+          <Link to="/component">Component</Link>
         </li>
       </ul>
     </header>
